@@ -1,5 +1,13 @@
 <?php require 'inc/data/products.php'; ?>
 <?php require 'inc/head.php'; ?>
+<?php
+if ($_SERVER["QUERY_STRING"]) {
+    preg_match("/add_to_cart=([0-9]+)/", $_SERVER["QUERY_STRING"], $articleNumber);
+    $_SESSION["articles"][$catalog[$articleNumber[1]]["name"]] += 1;
+    var_dump($_SESSION);
+}
+?>
+
 <section class="cookies container-fluid">
     <div class="row">
         <?php foreach ($catalog as $id => $cookie) { ?>
